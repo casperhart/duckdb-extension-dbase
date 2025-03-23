@@ -1,0 +1,21 @@
+# name: test/sql/read_dbf.test
+# description: test read_dbf extension
+# group: [quack]
+
+# Before we load the extension, this will fail
+statement error
+SELECT read_dbf('Sam');
+----
+Catalog Error: Scalar Function with name read_dbf does not exist!
+
+# Require statement will ensure the extension is loaded from now on
+require read_dbf
+
+require icu
+
+# Confirm the extension works
+query IIII
+SELECT * from read_dbf('test/data/stations.dbf') limit 2;
+----
+Van Dorn Street	#0000ff	rail-metro	blue
+Franconia-Springfield	#0000ff	rail-metro	blue

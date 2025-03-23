@@ -1,3 +1,7 @@
 # statically linking the C runtime on windows seems sensible?
 [target.x86_64-pc-windows-msvc]
 rustflags = ["-Ctarget-feature=+crt-static"]
+
+[env]
+DUCKDB_EXTENSION_MIN_DUCKDB_VERSION = "v1.2.0"
+DUCKDB_EXTENSION_NAME = "read_dbase"
